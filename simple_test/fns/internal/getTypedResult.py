@@ -41,7 +41,7 @@ def getTypedResult(value, typeToSomething, fnName):
     raise_(
         ValueError,
         f"""\
-        {fnName} doesn't support the type {valueType}
+        {fnName} doesn't support the type '{valueType.__name__}'
         supported types: {supportedTypes}
         """,
     )

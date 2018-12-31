@@ -3,7 +3,6 @@ name = "simple_test"
 version = "0.1.0a1"
 description = "A simple test runner"
 authors = ["Philip Olson <philip.olson@pm.me>"]
-license = "WTFNMFPL-1.0"
 readme = "README.md"
 repository = "https://github.com/olsonpm/py_simple-test"
 include = ["license.txt"]
@@ -16,6 +15,7 @@ python = "^3.7"
 wrapt = "^1.10"
 ordered_set = "^3.1"
 simple_test_default_reporter = {path = "../py_simple-test-default-reporter"}
+simple_test_process = {path = "../py_simple-test-process"}
 
 [tool.poetry.dev-dependencies]
 case_conversion = "^2.1"

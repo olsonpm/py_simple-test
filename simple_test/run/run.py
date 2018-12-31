@@ -3,21 +3,10 @@
 # ------- #
 
 from os import path
-from simple_test_default_reporter import report as defaultReport
-from .runAllTests import runAllTests
 from .validateRunParams import validateRunParams
-from ..state import initState
+from ..fns import raise_
 import os
-
-from .utils import (
-    gatherTests,
-    importFile,
-    importFilesInDir,
-    recursiveGlob,
-    toResolvedPath,
-)
-
-from ..fns import forEach, isSomething, map_, passThrough
+import sys
 
 
 # ---- #
@@ -25,38 +14,50 @@ from ..fns import forEach, isSomething, map_, passThrough
 # ---- #
 
 
-def run(
-    *, filesAndDirs=None, globStr=None, report=None, rootDir=None, silent=False
-):
-    state = initState()
-    validateRunParams(filesAndDirs, globStr, report, rootDir, silent)
+def createRun(subprocessRun):
+    return lambda **kwargs: run(subprocessRun, **kwargs)
 
-    if report is None and not silent:
-        report = defaultReport
 
-    if rootDir is None:
-        rootDir = os.getcwd()
+def run(subprocessRun, *, projectDir=None, reporter=None, silent=False):
+    validateRunParams(projectDir, reporter, silent)
+
+    if projectDir is None:
+        projectDir = os.getcwd()
     else:
-        rootDir = path.abspath(rootDir)
+        projectDir = path.normpath(projectDir)
 
-    if isSomething(globStr):
-        filesAndDirs = passThrough(
-            globStr,
-            [toResolvedPath(rootDir), recursiveGlob, map_(path.normpath)],
+    if reporter is None:
+        reporter = "simple_test_default_reporter"
+
+    ensureTestsDirExists(projectDir)
+
+    subprocessResult = subprocessRun(
+        [
+            sys.executable,
+            "-m",
+            "simple_test_process",
+            projectDir,
+            reporter,
+            str(silent),
+        ],
+        cwd=projectDir,
+    )
+
+    return subprocessResult.returncode
+
+
+# ------- #
+# Helpers #
+# ------- #
+
+
+def ensureTestsDirExists(projectDir):
+    testsDir = path.join(projectDir, "tests")
+    if not path.isdir(testsDir):
+        raise_(
+            Exception,
+            f"""
+            projectDir must contain a directory 'tests'
+            projectDir: {projectDir}
+            """,
         )
-    else:
-        filesAndDirs = map_(toResolvedPath(rootDir))(filesAndDirs)
-
-    for idx, fileOrDir in enumerate(filesAndDirs):
-        if os.path.isdir(fileOrDir):
-            importFilesInDir(fileOrDir, idx)
-        else:
-            importFile(fileOrDir, idx)
-
-    forEach(gatherTests)(state.rootSuites)
-    runAllTests(state)
-
-    if not silent:
-        report(state)
-
-    return state

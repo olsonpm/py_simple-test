@@ -1,26 +1,57 @@
-from types import SimpleNamespace as o
+# ------- #
+# Imports #
+# ------- #
+
+from .internal.getTypedResult import getTypedResult
+from types import SimpleNamespace
 from copy import copy
 
-#
-# assigns attributes of primaryObj over secondaryObj
-# this is intended to consume instances of SimpleNamespace, but not restricted
-#   to such
-# returns an instance of SimpleNamespace
-#
+
+# ---- #
+# Main #
+# ---- #
 
 
-def assign(primaryObj):
-    simplePrimary = o()
-    for k, v in primaryObj.__dict__.items():
-        setattr(simplePrimary, k, v)
+def assign(collection):
+    fnName = assign.__name__
+    assignFn = getTypedResult(collection, typeToAssign, fnName)
 
-    def assign_inner(secondaryObj):
-        result = copy(simplePrimary)
+    return assignFn(collection)
 
-        for k, v in secondaryObj.__dict__.items():
+
+# ------- #
+# Helpers #
+# ------- #
+
+
+def assign_simpleNamespace(primary):
+    primaryCopy = copy(primary)
+
+    def assign_simpleNamespace_inner(secondary):
+        result = copy(primaryCopy)
+
+        for k, v in secondary.__dict__.items():
             if k not in result.__dict__:
                 setattr(result, k, v)
 
         return result
 
-    return assign_inner
+    return assign_simpleNamespace_inner
+
+
+def assign_dict(primary):
+    primaryCopy = copy(primary)
+
+    def assign_dict_inner(secondary):
+        result = copy(primaryCopy)
+
+        for k, v in secondary.items():
+            if k not in result:
+                result[k] = v
+
+        return result
+
+    return assign_dict_inner
+
+
+typeToAssign = {dict: assign_dict, SimpleNamespace: assign_simpleNamespace}

@@ -20,8 +20,8 @@ def sort(collection):
 # ------- #
 
 
-def sort_dispatched(something):
+def sort_viaSorted(something):
     return sorted(something)
 
 
-typeToSort = {list: sort_dispatched}
+typeToSort = {list: sort_viaSorted}

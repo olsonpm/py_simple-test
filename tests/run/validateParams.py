@@ -1,40 +1,78 @@
+from os import path
 from simple_test import run
 
 
 def runTests(r):
     try:
-        code = "run(globStr=1)"
-        run(globStr=1)
+        code = "run(projectDir=1)"
+        run(projectDir=1)
         r.shouldHaveRaisedAnError(code)
     except Exception as e:
-        expectedSubString = "'globStr' must be an instance of str"
+        expectedSubString = "'projectDir' must be an instance of str"
         if expectedSubString not in str(e):
             r.raisedUnexpectedError(code)
 
     try:
-        code = 'run(globStr="")'
-        run(globStr="")
+        code = "run(projectDir='')"
+        run(projectDir="")
         r.shouldHaveRaisedAnError(code)
     except Exception as e:
-        expectedSubString = "'globStr' cannot be empty"
+        expectedSubString = "'projectDir' cannot be an empty string"
         if expectedSubString not in str(e):
             r.raisedUnexpectedError(code)
 
     try:
-        code = "run(report=1)"
-        run(report="")
+        code = "run(projectDir='relative/path')"
+        run(projectDir="relative/path")
         r.shouldHaveRaisedAnError(code)
     except Exception as e:
-        expectedSubString = "'report' must be callable"
+        expectedSubString = "'projectDir' must pass 'os.path.isabs'"
         if expectedSubString not in str(e):
             r.raisedUnexpectedError(code)
 
     try:
-        code = "run(rootDir=1)"
-        run(rootDir=1)
+        code = "run(projectDir='/doesnt/exist')"
+        run(projectDir="/doesnt/exist")
         r.shouldHaveRaisedAnError(code)
     except Exception as e:
-        expectedSubString = "'rootDir' must be an instance of str"
+        expectedSubString = "'projectDir' must pass 'os.path.isdir'"
+        if expectedSubString not in str(e):
+            r.raisedUnexpectedError(code)
+
+    try:
+        thisFilesDirectory = path.dirname(path.abspath(__file__))
+        code = "run(projectDir=thisFilesDirectory)"
+        run(projectDir=thisFilesDirectory)
+        r.shouldHaveRaisedAnError(code)
+    except Exception as e:
+        expectedSubString = "projectDir must contain a directory 'tests'"
+        if expectedSubString not in str(e):
+            r.raisedUnexpectedError(code)
+
+    try:
+        code = "run(reporter=1)"
+        run(reporter=1)
+        r.shouldHaveRaisedAnError(code)
+    except Exception as e:
+        expectedSubString = "'reporter' must be an instance of str"
+        if expectedSubString not in str(e):
+            r.raisedUnexpectedError(code)
+
+    try:
+        code = "run(reporter='')"
+        run(reporter="")
+        r.shouldHaveRaisedAnError(code)
+    except Exception as e:
+        expectedSubString = "'reporter' cannot be an empty string"
+        if expectedSubString not in str(e):
+            r.raisedUnexpectedError(code)
+
+    try:
+        code = "run(reporter='.relative.not.supported')"
+        run(reporter=".relative.not.supported")
+        r.shouldHaveRaisedAnError(code)
+    except Exception as e:
+        expectedSubString = "relative reporter modules are not yet supported"
         if expectedSubString not in str(e):
             r.raisedUnexpectedError(code)
 
@@ -44,42 +82,6 @@ def runTests(r):
         r.shouldHaveRaisedAnError(code)
     except Exception as e:
         expectedSubString = "'silent' must be an instance of bool"
-        if expectedSubString not in str(e):
-            r.raisedUnexpectedError(code)
-
-    try:
-        code = "run(filesAndDirs=1)"
-        run(filesAndDirs=1)
-        r.shouldHaveRaisedAnError(code)
-    except Exception as e:
-        expectedSubString = "'filesAndDirs' must be an instance of list"
-        if expectedSubString not in str(e):
-            r.raisedUnexpectedError(code)
-
-    try:
-        code = "run(filesAndDirs=[])"
-        run(filesAndDirs=[])
-        r.shouldHaveRaisedAnError(code)
-    except Exception as e:
-        expectedSubString = "'filesAndDirs' cannot be empty"
-        if expectedSubString not in str(e):
-            r.raisedUnexpectedError(code)
-
-    try:
-        code = "run(filesAndDirs=[1])"
-        run(filesAndDirs=[1])
-        r.shouldHaveRaisedAnError(code)
-    except Exception as e:
-        expectedSubString = "'filesAndDirs' contains non-string elements"
-        if expectedSubString not in str(e):
-            r.raisedUnexpectedError(code)
-
-    try:
-        code = 'run(filesAndDirs=["someFile"], globStr="someGlob")'
-        run(filesAndDirs=["someFile"], globStr="someGlob")
-        r.shouldHaveRaisedAnError(code)
-    except Exception as e:
-        expectedSubString = "you cannot pass both 'filesAndDirs' and 'globStr'"
         if expectedSubString not in str(e):
             r.raisedUnexpectedError(code)
 

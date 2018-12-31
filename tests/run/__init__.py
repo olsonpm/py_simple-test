@@ -3,9 +3,9 @@ from ..Results import Results, o
 from ..utils import getModuleBasename
 from simple_test.fns import forEach, invokeAttr, isLaden, keepWhen
 
-from . import manyFail, manySuccess, oneDir, oneFile, validateParams
+from . import validateParams, withProcess
 
-modules = [manyFail, manySuccess, oneDir, oneFile, validateParams]
+modules = [validateParams, withProcess]
 
 
 def runTests():
