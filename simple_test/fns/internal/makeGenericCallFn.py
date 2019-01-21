@@ -3,9 +3,8 @@
 # ------- #
 
 from math import inf
-
 from .getNumPositionalParams import getNumPositionalParams
-from ..raise_ import raise_
+from .raise_ import raise_
 
 
 # ---- #

@@ -3,18 +3,20 @@ from ..internal.raise_ import raise_
 import wrapt
 
 
-def argIsType(aType):
+def argIsInstance(aType, fnName=None):
     @wrapt.decorator
     def wrapper(fn, _instance, args, kwargs):
+        nonlocal fnName
+
         typePassed = type(args[0])
-        if typePassed is not aType:
+        if not isinstance(typePassed, aType):
             argName = list(signature(fn).parameters)[0]
-            fnName = fn.__name__
+            fnName = fnName or fn.__name__
             typeName = aType.__name__
             raise_(
                 ValueError,
                 f"""
-                {fnName} requires {argName} to have the type {typeName}
+                {fnName} requires {argName} to be an instance of {typeName}
                 type passed: {typePassed.__name__}
                 """,
             )

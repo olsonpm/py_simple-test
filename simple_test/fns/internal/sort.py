@@ -2,7 +2,7 @@
 # Imports #
 # ------- #
 
-from .internal.getTypedResult import getTypedResult
+from .getTypedResult import getTypedResult
 
 
 # ---- #

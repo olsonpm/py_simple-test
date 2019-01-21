@@ -1,17 +1,17 @@
 from ordered_set import OrderedSet
 import wrapt
 
-from ..discardWhen import discardWhen
-from ..get import get
+from ..internal.discardWhen import discardWhen
+from ..internal.get import get
 from ..internal.getArgName import getArgName
-from ..isLaden import isLaden
-from ..isType import isType
-from ..join import join
-from ..map_ import map_
-from ..passThrough import passThrough
-from ..raise_ import raise_
-from ..sort import sort
-from ..toType import toType
+from ..internal.isLaden import isLaden
+from ..internal.isType import isType
+from ..internal.joinWith import joinWith
+from ..internal.map_ import map_
+from ..internal.passThrough import passThrough
+from ..internal.raise_ import raise_
+from ..internal.sort import sort
+from ..internal.toType import toType
 
 
 def argIsListOfType(aType):
@@ -43,7 +43,7 @@ def argIsListOfType(aType):
                     list,
                     map_(get("__name__")),
                     sort,
-                    join(", "),
+                    joinWith(", "),
                 ],
             )
             raise_(

@@ -8,8 +8,8 @@
 # Imports #
 # ------- #
 
-from ..raise_ import raise_
-from ..get import get
+from .raise_ import raise_
+from .get import get
 
 
 # ---- #

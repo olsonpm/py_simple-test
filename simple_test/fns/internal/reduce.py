@@ -2,9 +2,9 @@
 # Imports #
 # ------- #
 
-from .internal.makeGenericCallFn import makeGenericCallFn
-from .internal.getTypedResult import getTypedResult
-from .decorators.argIsCallable import argIsCallable
+from .makeGenericCallFn import makeGenericCallFn
+from .getTypedResult import getTypedResult
+from ..decorators.argIsCallable import argIsCallable
 
 
 # ---- #

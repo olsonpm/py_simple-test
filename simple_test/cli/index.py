@@ -1,9 +1,3 @@
-#
-# TODO: decide whether this should capture reporter output and assign it
-#   to stdout
-#
-
-
 # ------- #
 # Imports #
 # ------- #

@@ -1,5 +1,5 @@
 from inspect import signature
-from ..raise_ import raise_
+from .raise_ import raise_
 
 
 def getFnSignature(fn, callerName):

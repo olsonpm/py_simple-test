@@ -5,7 +5,7 @@
 from inspect import Parameter
 from math import inf
 from .getFnSignature import getFnSignature
-from ..iif import iif
+from .iif import iif
 
 
 # ---- #

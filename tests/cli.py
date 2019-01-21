@@ -70,6 +70,14 @@ def fail(r):
     if result.stderr != stderr or result.code != 2:
         r.addError(code)
 
+    code = "runNoopSimpleTest(['no', 'positional', 'args'])"
+    result = runNoopSimpleTest(["no", "positional", "args"])
+    stderr = (
+        "this command doesn't take positional arguments" + os.linesep + usage
+    )
+    if result.stderr != stderr or result.code != 2:
+        r.addError(code)
+
     code = "runSimpleTest(raiseError, [])"
     result = runSimpleTest(raiseError, [])
     stderr = "An unexpected error occurred"

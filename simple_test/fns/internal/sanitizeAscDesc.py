@@ -1,4 +1,4 @@
-from ..raise_ import raise_
+from .raise_ import raise_
 
 ascDescSet = {"asc", "desc"}
 

@@ -3,7 +3,7 @@
 # ------- #
 
 from math import inf
-from ..returnFirstArgument import returnFirstArgument as identity
+from .returnFirstArgument import returnFirstArgument as identity
 from .getNumPositionalParams import getNumPositionalParams
 
 

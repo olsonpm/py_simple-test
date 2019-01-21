@@ -1,8 +1,1 @@
-from textwrap import dedent
-
-
-def raise_(errorClass, message, *, fromException=None):
-    if fromException is None:
-        raise errorClass(dedent(message))
-    else:
-        raise errorClass(dedent(message)) from fromException
+from .internal.raise_ import raise_  # noqa f401
