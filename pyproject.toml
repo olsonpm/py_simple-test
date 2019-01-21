@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "po.simple_test"
-version = "0.1.1"
+version = "0.1.0"
 description = "A simple test runner"
 authors = ["Philip Olson <philip.olson@pm.me>"]
 license = "WTFNMFPL-1.0"
