@@ -7,6 +7,9 @@ license = "WTFNMFPL-1.0"
 readme = "README.md"
 repository = "https://github.com/olsonpm/py_simple-test"
 include = ["license.txt"]
+packages = [
+  { include = "po" }
+]
 
 [tool.poetry.scripts]
 simple-test = "po.simple_test.script:main"
