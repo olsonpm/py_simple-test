@@ -1,5 +1,5 @@
 from os import path
-from simple_test import run
+from po.simple_test import run
 
 
 def runTests(r):

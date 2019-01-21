@@ -3,7 +3,7 @@
 # ------- #
 
 from difflib import Differ
-from simple_test.fns import join, passThrough
+from po.simple_test.fns import joinWith, passThrough
 
 
 # ---- #
@@ -26,4 +26,4 @@ def diff(left, right):
     result = _d.compare(
         left.splitlines(keepends=True), right.splitlines(keepends=True)
     )
-    return passThrough(result, [list, join("")])
+    return passThrough(result, [list, joinWith("")])

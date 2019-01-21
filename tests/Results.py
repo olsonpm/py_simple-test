@@ -3,7 +3,7 @@
 # ------- #
 
 from simple_chalk import green, red
-from simple_test.fns import isEmpty
+from po.simple_test.fns import isEmpty
 
 
 # ---- #

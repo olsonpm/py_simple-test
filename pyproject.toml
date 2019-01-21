@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "simple_test"
+name = "po.simple_test"
 version = "0.1.1"
 description = "A simple test runner"
 authors = ["Philip Olson <philip.olson@pm.me>"]
@@ -9,7 +9,7 @@ repository = "https://github.com/olsonpm/py_simple-test"
 include = ["license.txt"]
 
 [tool.poetry.scripts]
-simple-test = "simple_test.script:main"
+simple-test = "po.simple_test.script:main"
 
 [tool.poetry.dependencies]
 python = "^3.7"

@@ -3,6 +3,7 @@ from .invokeAttr import invokeAttr
 from .isEmpty import isEmpty
 from .isLaden import isLaden
 from .isSomething import isSomething
+from .joinWith import joinWith
 from .justReturn import justReturn
 from .keepWhen import keepWhen
 from .passThrough import passThrough
@@ -14,6 +15,7 @@ __all__ = [
     "isEmpty",
     "isLaden",
     "isSomething",
+    "joinWith",
     "justReturn",
     "keepWhen",
     "passThrough",

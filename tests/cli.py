@@ -3,10 +3,10 @@
 # ------- #
 
 from types import SimpleNamespace as o
-from simple_test.cli.index import createRunSimpleTest, runSimpleTest
-from simple_test.cli.usage import usage
-from simple_test.fns import passThrough, raise_
-from simple_test import version
+from po.simple_test.cli.index import createRunSimpleTest, runSimpleTest
+from po.simple_test.cli.usage import usage
+from po.simple_test.fns import passThrough, raise_
+from po.simple_test import version
 import os
 
 

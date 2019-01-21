@@ -3,8 +3,8 @@
 # ------- #
 
 from os import path
-from simple_test.fns import justReturn
-from simple_test.run import createRun
+from po.simple_test.fns import justReturn
+from po.simple_test.run import createRun
 from types import SimpleNamespace as o
 import sys
 
