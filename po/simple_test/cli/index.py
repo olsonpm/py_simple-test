@@ -11,13 +11,6 @@ import os
 
 
 # ---- #
-# Init #
-# ---- #
-
-twoLineSeps = os.linesep + os.linesep
-
-
-# ---- #
 # Main #
 # ---- #
 
@@ -50,6 +43,7 @@ def runSimpleTest(run, args):
 
     try:
         subprocessReturnCode = run(
+            grepArgs=argsObj.grepArgs,
             reporter=argsObj.reporter,
             projectDir=argsObj.projectDir,
             silent=isSilent,
@@ -61,7 +55,7 @@ def runSimpleTest(run, args):
     except:
         if not isSilent:
             result.stderr = (
-                "An unexpected error occurred" + twoLineSeps + format_exc()
+                "An unexpected error occurred" + (os.linesep * 2) + format_exc()
             )
 
         result.code = 2

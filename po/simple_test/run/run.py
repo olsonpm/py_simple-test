@@ -2,11 +2,23 @@
 # Imports #
 # ------- #
 
+from case_conversion import dashcase
+from copy import deepcopy
 from os import path
+from simple_test_process.parseArgs import _grepArgs
 from .validateRunParams import validateRunParams
-from ..fns import raise_
 import os
 import sys
+
+from ..fns import (
+    flattenDeep,
+    getListOfCollectionValues,
+    isLaden,
+    keepWhen,
+    map_,
+    passThrough,
+    raise_,
+)
 
 
 # ---- #
@@ -18,8 +30,18 @@ def createRun(subprocessRun):
     return lambda **kwargs: run(subprocessRun, **kwargs)
 
 
-def run(subprocessRun, *, projectDir=None, reporter=None, silent=False):
-    validateRunParams(projectDir, reporter, silent)
+def run(
+    subprocessRun,
+    *,
+    grepArgs=None,
+    projectDir=None,
+    reporter=None,
+    silent=False,
+):
+    if grepArgs is None:
+        grepArgs = deepcopy(_grepArgs)
+
+    validateRunParams(grepArgs, projectDir, reporter, silent)
 
     if projectDir is None:
         projectDir = os.getcwd()
@@ -31,6 +53,8 @@ def run(subprocessRun, *, projectDir=None, reporter=None, silent=False):
 
     ensureTestsDirExists(projectDir)
 
+    cliGrepArgs = toCliGrepArgs(grepArgs)
+
     subprocessResult = subprocessRun(
         [
             sys.executable,
@@ -39,6 +63,7 @@ def run(subprocessRun, *, projectDir=None, reporter=None, silent=False):
             projectDir,
             reporter,
             str(silent),
+            *cliGrepArgs,
         ],
         cwd=projectDir,
     )
@@ -61,3 +86,20 @@ def ensureTestsDirExists(projectDir):
             projectDir: {projectDir}
             """,
         )
+
+
+def eachToKeyValuePair(grepVals, grepKey):
+    cliGrepKey = f"--{dashcase(grepKey)}"
+    return map_(lambda val: [cliGrepKey, val])(grepVals)
+
+
+def toCliGrepArgs(grepArgs):
+    return passThrough(
+        grepArgs,
+        [
+            keepWhen(isLaden),
+            map_(eachToKeyValuePair),
+            getListOfCollectionValues,
+            flattenDeep,
+        ],
+    )

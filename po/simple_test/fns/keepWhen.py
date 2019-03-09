@@ -2,6 +2,7 @@
 # Imports #
 # ------- #
 
+from types import SimpleNamespace
 from .internal.makeGenericCallFn import makeGenericCallFn
 from .internal.getTypedResult import getTypedResult
 from .decorators.argIsCallable import argIsCallable
@@ -47,4 +48,17 @@ def keepWhen_dict(shouldKeep, aDict):
     return result
 
 
-typeToKeepWhen = {list: keepWhen_list, dict: keepWhen_dict}
+def keepWhen_simpleNamespace(shouldKeep, aSimpleNamespace):
+    result = SimpleNamespace()
+    for key, val in aSimpleNamespace.__dict__.items():
+        if shouldKeep(val, key, aSimpleNamespace):
+            setattr(result, key, val)
+
+    return result
+
+
+typeToKeepWhen = {
+    list: keepWhen_list,
+    dict: keepWhen_dict,
+    SimpleNamespace: keepWhen_simpleNamespace,
+}

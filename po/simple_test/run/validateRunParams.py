@@ -2,8 +2,17 @@
 # Imports #
 # ------- #
 
-from ..fns import isEmpty, isSomething, raise_
 from os import path
+from simple_test_process.parseArgs import _grepArgs
+from types import SimpleNamespace
+from ..fns import all_, isEmpty, isSomething, raise_
+
+
+# ---- #
+# Init #
+# ---- #
+
+setOfGrepArgsKeys = set(_grepArgs.__dict__.keys())
 
 
 # ---- #
@@ -11,7 +20,29 @@ from os import path
 # ---- #
 
 
-def validateRunParams(projectDir, reporter, silent):
+def validateRunParams(grepArgs, projectDir, reporter, silent):
+    if not isinstance(grepArgs, SimpleNamespace):
+        raise_(
+            TypeError,
+            f"""
+            'grepArgs' must be an instance of SimpleNamespace
+            type: {type(grepArgs).__name__}
+            """,
+        )
+
+    if not hasAllGrepKeys(grepArgs):
+        raise_(
+            ValueError,
+            f"""
+            'grepArgs' must contain all (and only) the available keys
+            available keys: {", ".join(_grepArgs.__dict__.keys())}
+            keys given: {", ".join(grepArgs.__dict__.keys())}
+            """,
+        )
+
+    if not all_(areStringLists)(grepArgs):
+        raise ValueError("'grepArgs' can only contain lists of strings")
+
     if isSomething(projectDir):
         if not isinstance(projectDir, str):
             raise_(
@@ -73,3 +104,27 @@ def validateRunParams(projectDir, reporter, silent):
             type: {type(silent).__name__}
             """,
         )
+
+
+# ------- #
+# Helpers #
+# ------- #
+
+
+def hasAllGrepKeys(grepArgs):
+    if len(grepArgs.__dict__) != len(_grepArgs.__dict__):
+        return False
+
+    for key in grepArgs.__dict__.keys():
+        if key not in setOfGrepArgsKeys:
+            return False
+
+    return True
+
+
+def areStrings(val):
+    return isinstance(val, str)
+
+
+def areStringLists(val):
+    return isinstance(val, list) and all_(areStrings)(val)

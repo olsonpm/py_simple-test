@@ -46,10 +46,29 @@ def runTests(r):
         r.addError(code)
 
     code = (
-        "spyRun(projectDir=projectDir, reporter='some_reporter', silent=True)"
+        "spyRun(grepArgs=grepArgs, projectDir=projectDir"
+        ", reporter='some_reporter', silent=True)"
     )
+    grepArgs = o(
+        grep=["grep1", "grep2"],
+        grepTests=["greptest1"],
+        grepSuites=["grepsuite1"],
+    )
+    expectedCliGrepArgs = [
+        "--grep",
+        "grep1",
+        "--grep",
+        "grep2",
+        "--grep-tests",
+        "greptest1",
+        "--grep-suites",
+        "grepsuite1",
+    ]
     result = spyRun(
-        projectDir=projectDir, reporter="some_reporter", silent=True
+        grepArgs=grepArgs,
+        projectDir=projectDir,
+        reporter="some_reporter",
+        silent=True,
     )
     passed = (
         result == 0
@@ -62,6 +81,7 @@ def runTests(r):
             projectDir,
             "some_reporter",
             "True",
+            *expectedCliGrepArgs,
         ]
         and spyResult.kwargs == {"cwd": projectDir}
     )

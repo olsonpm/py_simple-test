@@ -1,5 +1,5 @@
 [[package]]
-category = "dev"
+category = "main"
 description = "A dict that works with both hashable and non-hashable keys"
 name = "all-purpose-dict"
 optional = false
@@ -11,7 +11,7 @@ ordered_set = ">=3.1,<4.0"
 wrapt = ">=1.10,<2.0"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "A set that works with both hashable and non-hashable elements"
 name = "all-purpose-set"
 optional = false
@@ -24,7 +24,7 @@ tedent = ">=0.1.1,<0.2.0"
 wrapt = ">=1.10,<2.0"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "A linked list with an api and documentation more to my liking"
 name = "another-linked-list"
 optional = false
@@ -83,7 +83,7 @@ python-versions = ">=2.7"
 version = "3.1"
 
 [[package]]
-category = "dev"
+category = "main"
 description = "A pretty printer for SimpleNamespace"
 name = "pretty-simple-namespace"
 optional = false
@@ -119,7 +119,7 @@ description = "The default reporter for simple_test"
 name = "simple-test-default-reporter"
 optional = false
 python-versions = ">=3.7,<4.0"
-version = "0.1.0"
+version = "0.2.0"
 
 [package.dependencies]
 ordered_set = ">=3.1,<4.0"
@@ -133,12 +133,13 @@ description = "The process ran by simple_test to isolate the environment"
 name = "simple-test-process"
 optional = false
 python-versions = ">=3.7,<4.0"
-version = "0.1.0"
+version = "0.2.0"
 
 [package.dependencies]
 case_conversion = ">=2.1,<3.0"
 num2words = ">=0.5.8,<0.6.0"
 ordered_set = ">=3.1,<4.0"
+pretty_simple_namespace = ">=0.1.0,<0.2.0"
 simple_chalk = ">=0.1.0,<0.2.0"
 tedent = ">=0.1.1,<0.2.0"
 toml = ">=0.10.0,<0.11.0"
@@ -173,7 +174,7 @@ python-versions = "*"
 version = "1.11.1"
 
 [metadata]
-content-hash = "703ee9d6ca7c3f4290af285e7811a010434bfe623cc94b18a50e52c1414e58fd"
+content-hash = "3d8c26beff7a956087f456cbbd6bec084f5c8aeb25e9a4a493becb3506b030d5"
 python-versions = "^3.7"
 
 [metadata.hashes]
@@ -188,8 +189,8 @@ ordered-set = ["41c7ba85e7619cd4c71e38d4cd434f84de8473b826919eb79274b3a11b940b4d
 pretty-simple-namespace = ["56b18a978bb5538d259f3fd10680dec04ddfe8bb59b216af61eaf45ed9598a19", "e14a2bd752dd866f5cc1b0d1882272d32f589852e78302a7f40a4c67c6f7a06f"]
 regex = ["15b4a185ae9782133f398f8ab7c29612a6e5f34ea9411e4cd36e91e78c347ebe", "3852b76f0b6d7bd98d328d548716c151b79017f2b81347360f26e5db10fb6503", "79a6a60ed1ee3b12eb0e828c01d75e3b743af6616d69add6c2fde1d425a4ba3f", "a2938c290b3be2c7cadafa21de3051f2ed23bfaf88728a1fe5dc552cbfdb0326", "aff7414712c9e6d260609da9c9af3aacebfbc307a4abe3376c7736e2a6c8563f", "d03782f0b0fa34f8f1dbdc94e27cf193b83c6105307a8c10563938c6d85180d9", "db79ac3d81e655dc12d38a865dd6d1b569a28fab4c53749051cd599a6eb7614f", "e803b3646c3f9c47f1f3dc870173c5d79c0fd2fd8e40bf917b97c7b56701baff", "e9660ccca360b6bd79606aab3672562ebb14bce6af6c501107364668543f4bef"]
 simple-chalk = ["d80f55993dfa040c1b55d2fbfb925e4fbb5798c2934601aa448ef4a192d84196"]
-simple-test-default-reporter = ["2adecaeb09c1d4733a2581eada5440a51bf067327aa21d0b3b676e7af66502eb", "efe806e77a72b6ffcd8f9fadb3b9583caed5d9b9902ceb077fd81bd9c222c98c"]
-simple-test-process = ["b448eb8ac8e7f3c769709ae877b52e4cbd557ea69cd9f5b444740c3e20dc37af", "b82a8d509e725b7139ca7df38d927914a1245d18322957cfd95be360047c6f6a"]
+simple-test-default-reporter = ["2900d6d48cf10512905cd30163df74e09b4adcad8cc3fecbffb8d0277c266f01", "f3a137b15ac0725dd0cafa6c06f5a1a1cfc913c3374a544aaa6b38bf3e66c88f"]
+simple-test-process = ["82484b4ea2805911df908698900206d9bed1a9d3bfc0ac7ead03402e832fcf83", "e99403ef038b69ed7068e05ab764cab2b907da4a6059c1cc28cdd5a489e551e8"]
 tedent = ["a2565f469f9044c9f6117962bea67da6ee3b71e112d055128414ba86c15ca1ae", "b83bb8eba0a8c53b1597e3c18a0cefdaeeb83cf64d3f6ca5e5973195778a9eec"]
 toml = ["229f81c57791a41d65e399fc06bf0848bab550a9dfd5ed66df18ce5f05e73d5c", "235682dd292d5899d361a811df37e04a8828a5b1da3115886b73cf81ebc9100e", "f1db651f9657708513243e61e6cc67d101a39bad662eaa9b5546f789338e07a3"]
 wrapt = ["4aea003270831cceb8a90ff27c4031da6ead7ec1886023b80ce0dfe0adf61533"]

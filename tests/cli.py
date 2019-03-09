@@ -2,6 +2,8 @@
 # Imports #
 # ------- #
 
+from copy import deepcopy
+from simple_test_process.parseArgs import _grepArgs as emptyGrepArgs
 from types import SimpleNamespace as o
 from po.simple_test.cli.index import createRunSimpleTest, runSimpleTest
 from po.simple_test.cli.usage import usage
@@ -21,9 +23,14 @@ successState = object()
 def runSpySimpleTest(*args, **kwargs):
     spy = o()
 
-    def spyRun(*, projectDir, reporter, silent):
+    def spyRun(*, grepArgs, projectDir, reporter, silent):
         nonlocal spy
-        spy = o(projectDir=projectDir, reporter=reporter, silent=silent)
+        spy = o(
+            grepArgs=grepArgs,
+            projectDir=projectDir,
+            reporter=reporter,
+            silent=silent,
+        )
         return 0
 
     spy.cliResult = createRunSimpleTest(spyRun)(*args, **kwargs)
@@ -123,6 +130,48 @@ def success(r):
         and result.projectDir == "/myProject"
         and result.reporter == "tests.test_reporter_success"
         and result.silent is True
+        and result.grepArgs == emptyGrepArgs
+    )
+    if not passed:
+        r.addError(code)
+
+    code = "runSpySimpleTest(['--grep', 'grep1', '--grep', 'grep2'])"
+    result = runSpySimpleTest(["--grep", "grep1", "--grep", "grep2"])
+    cliResult = result.cliResult
+    expectedGrepArgs = deepcopy(emptyGrepArgs)
+    expectedGrepArgs.grep.extend(["grep1", "grep2"])
+    passed = (
+        cliResult.stdout is None
+        and cliResult.stderr is None
+        and cliResult.code == 0
+        and result.projectDir is None
+        and result.reporter is None
+        and result.silent is False
+        and result.grepArgs == expectedGrepArgs
+    )
+    if not passed:
+        r.addError(code)
+
+    code = (
+        "runSpySimpleTest("
+        "['--grep-tests', 'grep1test', '--grep-suites', 'grep1suite']"
+        ")"
+    )
+    result = runSpySimpleTest(
+        ["--grep-tests", "grep1test", "--grep-suites", "grep1suite"]
+    )
+    cliResult = result.cliResult
+    expectedGrepArgs = deepcopy(emptyGrepArgs)
+    expectedGrepArgs.grepTests.append("grep1test")
+    expectedGrepArgs.grepSuites.append("grep1suite")
+    passed = (
+        cliResult.stdout is None
+        and cliResult.stderr is None
+        and cliResult.code == 0
+        and result.projectDir is None
+        and result.reporter is None
+        and result.silent is False
+        and result.grepArgs == expectedGrepArgs
     )
     if not passed:
         r.addError(code)
