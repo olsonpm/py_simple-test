@@ -78,7 +78,6 @@ def runTests(r):
             sys.executable,
             "-m",
             "simple_test_process",
-            projectDir,
             "some_reporter",
             "True",
             *expectedCliGrepArgs,

@@ -60,7 +60,6 @@ def run(
             sys.executable,
             "-m",
             "simple_test_process",
-            projectDir,
             reporter,
             str(silent),
             *cliGrepArgs,

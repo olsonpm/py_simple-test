@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "po.simple_test"
-version = "0.3.0"
+version = "0.4.0"
 description = "A simple test runner"
 authors = ["Philip Olson <philip.olson@pm.me>"]
 license = "WTFNMFPL-1.0"
@@ -21,7 +21,7 @@ ordered_set = "^3.1"
 case_conversion = "^2.1"
 tedent = "^0.1.1"
 simple_test_default_reporter = "^0.2.0"
-simple_test_process = "^0.3.0"
+simple_test_process = "^0.4.0"
 
 [tool.poetry.dev-dependencies]
 num2words = "^0.5.8"
