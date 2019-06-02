@@ -2,10 +2,10 @@
 # Imports #
 # ------- #
 
-from case_conversion import dashcase
+from .._vendor.case_conversion import dashcase
 from copy import deepcopy
 from os import path
-from simple_test_process.parseArgs import _grepArgs
+from .._vendor.simple_test_process.parseArgs import _grepArgs
 from .validateRunParams import validateRunParams
 import os
 import sys
@@ -30,14 +30,7 @@ def createRun(subprocessRun):
     return lambda **kwargs: run(subprocessRun, **kwargs)
 
 
-def run(
-    subprocessRun,
-    *,
-    grepArgs=None,
-    projectDir=None,
-    reporter=None,
-    silent=False,
-):
+def run(subprocessRun, *, grepArgs=None, projectDir=None, reporter=None, silent=False):
     if grepArgs is None:
         grepArgs = deepcopy(_grepArgs)
 
@@ -49,7 +42,7 @@ def run(
         projectDir = path.normpath(projectDir)
 
     if reporter is None:
-        reporter = "simple_test_default_reporter"
+        reporter = "None"
 
     ensureTestsDirExists(projectDir)
 

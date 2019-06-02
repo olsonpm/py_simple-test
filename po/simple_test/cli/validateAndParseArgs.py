@@ -2,9 +2,9 @@
 # Imports #
 # ------- #
 
-from case_conversion import camelcase
+from .._vendor.case_conversion import camelcase
 from copy import deepcopy
-from simple_test_process.parseArgs import _grepArgs, _grepArgsKeys
+from .._vendor.simple_test_process.parseArgs import _grepArgs, _grepArgsKeys
 from types import SimpleNamespace as o
 from ..fns import isLaden
 from .usage import usage
@@ -26,10 +26,7 @@ helpOrVersion = set(["--help", "--version"])
 
 def validateAndParseArgs(args, cliResult):
     argsObj = o(
-        reporter=None,
-        projectDir=None,
-        silent=False,
-        grepArgs=deepcopy(_grepArgs),
+        reporter=None, projectDir=None, silent=False, grepArgs=deepcopy(_grepArgs)
     )
     validationResult = o(
         argsObj=argsObj, cliResult=cliResult, hasError=False, positionalArgs=[]
@@ -45,9 +42,7 @@ def validateAndParseArgs(args, cliResult):
         if arg not in arguments:
             if not argsObj.silent:
                 if arg in helpOrVersion:
-                    cliResult.stderr = (
-                        f"'{arg}' must be the only argument when passed"
-                    )
+                    cliResult.stderr = f"'{arg}' must be the only argument when passed"
                 else:
                     cliResult.stderr = f"invalid option '{arg}'"
                     cliResult.stderr += os.linesep + usage
