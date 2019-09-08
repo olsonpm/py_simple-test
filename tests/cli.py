@@ -26,10 +26,7 @@ def runSpySimpleTest(*args, **kwargs):
     def spyRun(*, grepArgs, projectDir, reporter, silent):
         nonlocal spy
         spy = o(
-            grepArgs=grepArgs,
-            projectDir=projectDir,
-            reporter=reporter,
-            silent=silent,
+            grepArgs=grepArgs, projectDir=projectDir, reporter=reporter, silent=silent
         )
         return 0
 
@@ -79,9 +76,7 @@ def fail(r):
 
     code = "runNoopSimpleTest(['no', 'positional', 'args'])"
     result = runNoopSimpleTest(["no", "positional", "args"])
-    stderr = (
-        "this command doesn't take positional arguments" + os.linesep + usage
-    )
+    stderr = "this command doesn't take positional arguments" + os.linesep + usage
     if result.stderr != stderr or result.code != 2:
         r.addError(code)
 

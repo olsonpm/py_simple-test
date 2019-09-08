@@ -2,7 +2,7 @@
 # Imports #
 # ------- #
 
-from .._vendor.case_conversion import dashcase
+from .._vendor.po.case_conversion import dashcase
 from copy import deepcopy
 from os import path
 from .._vendor.simple_test_process.parseArgs import _grepArgs
@@ -52,7 +52,7 @@ def run(subprocessRun, *, grepArgs=None, projectDir=None, reporter=None, silent=
         [
             sys.executable,
             "-m",
-            "simple_test_process",
+            "po.simple_test._vendor.simple_test_process",
             reporter,
             str(silent),
             *cliGrepArgs,

@@ -3,7 +3,7 @@
 # ------- #
 
 from os import path
-from simple_test_process.parseArgs import _grepArgs
+from .._vendor.simple_test_process.parseArgs import _grepArgs
 from types import SimpleNamespace
 from ..fns import all_, isEmpty, isSomething, raise_
 

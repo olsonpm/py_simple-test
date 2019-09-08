@@ -50,9 +50,7 @@ def runTests(r):
         ", reporter='some_reporter', silent=True)"
     )
     grepArgs = o(
-        grep=["grep1", "grep2"],
-        grepTests=["greptest1"],
-        grepSuites=["grepsuite1"],
+        grep=["grep1", "grep2"], grepTests=["greptest1"], grepSuites=["grepsuite1"]
     )
     expectedCliGrepArgs = [
         "--grep",
@@ -65,10 +63,7 @@ def runTests(r):
         "grepsuite1",
     ]
     result = spyRun(
-        grepArgs=grepArgs,
-        projectDir=projectDir,
-        reporter="some_reporter",
-        silent=True,
+        grepArgs=grepArgs, projectDir=projectDir, reporter="some_reporter", silent=True
     )
     passed = (
         result == 0

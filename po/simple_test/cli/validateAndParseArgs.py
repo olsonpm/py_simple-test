@@ -2,7 +2,7 @@
 # Imports #
 # ------- #
 
-from .._vendor.case_conversion import camelcase
+from .._vendor.po.case_conversion import camelcase
 from copy import deepcopy
 from .._vendor.simple_test_process.parseArgs import _grepArgs, _grepArgsKeys
 from types import SimpleNamespace as o

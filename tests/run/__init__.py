@@ -1,4 +1,4 @@
-from case_conversion import separate_words
+from po.simple_test._vendor.po.case_conversion import separate_words
 from ..Results import Results, o
 from ..utils import getModuleBasename
 from po.simple_test.fns import forEach, invokeAttr, isLaden, keepWhen

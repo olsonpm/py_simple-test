@@ -1,43 +1,5 @@
 [[package]]
 category = "dev"
-description = "A dict that works with both hashable and non-hashable keys"
-name = "all-purpose-dict"
-optional = false
-python-versions = ">=3.7,<4.0"
-version = "0.1.3"
-
-[package.dependencies]
-ordered_set = ">=3.1,<4.0"
-wrapt = ">=1.10,<2.0"
-
-[[package]]
-category = "dev"
-description = "A set that works with both hashable and non-hashable elements"
-name = "all-purpose-set"
-optional = false
-python-versions = ">=3.7,<4.0"
-version = "0.1.5"
-
-[package.dependencies]
-ordered_set = ">=3.1,<4.0"
-tedent = ">=0.1.1,<0.2.0"
-wrapt = ">=1.10,<2.0"
-
-[[package]]
-category = "dev"
-description = "A linked list with an api and documentation more to my liking"
-name = "another-linked-list"
-optional = false
-python-versions = ">=3.7,<4.0"
-version = "0.1.0"
-
-[package.dependencies]
-all_purpose_set = ">=0.1.3,<0.2.0"
-ordered_set = ">=3.1,<4.0"
-wrapt = ">=1.10,<2.0"
-
-[[package]]
-category = "dev"
 description = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
 name = "appdirs"
 optional = false
@@ -68,17 +30,6 @@ toml = ">=0.9.4"
 
 [[package]]
 category = "dev"
-description = "Convert between different types of cases (unicode supported)"
-name = "case-conversion"
-optional = false
-python-versions = "*"
-version = "2.1.0"
-
-[package.dependencies]
-regex = ">=2016.2.25"
-
-[[package]]
-category = "dev"
 description = "Composable command line interface toolkit"
 name = "click"
 optional = false
@@ -99,7 +50,7 @@ description = "A simple function to test whether your git repo is clean"
 name = "is-git-repo-clean"
 optional = false
 python-versions = ">=3.7,<4.0"
-version = "0.3.4"
+version = "0.3.6"
 
 [[package]]
 category = "dev"
@@ -107,18 +58,10 @@ description = "Modules to convert numbers to words. Easily extensible."
 name = "num2words"
 optional = false
 python-versions = "*"
-version = "0.5.9"
+version = "0.5.10"
 
 [package.dependencies]
 docopt = ">=0.6.2"
-
-[[package]]
-category = "dev"
-description = "A MutableSet that remembers its order, so that every entry has an index."
-name = "ordered-set"
-optional = false
-python-versions = ">=2.7"
-version = "3.1.1"
 
 [[package]]
 category = "dev"
@@ -126,22 +69,7 @@ description = "A pretty printer for SimpleNamespace"
 name = "pretty-simple-namespace"
 optional = false
 python-versions = ">=3.7,<4.0"
-version = "0.1.0"
-
-[package.dependencies]
-all_purpose_dict = ">=0.1.2,<0.2.0"
-all_purpose_set = ">=0.1.4,<0.2.0"
-another_linked_list = ">=0.1.0,<0.2.0"
-ordered_set = ">=3.1,<4.0"
-wrapt = ">=1.10,<2.0"
-
-[[package]]
-category = "dev"
-description = "Alternative regular expression module, to replace re."
-name = "regex"
-optional = false
-python-versions = "*"
-version = "2019.04.14"
+version = "0.1.1"
 
 [[package]]
 category = "dev"
@@ -157,15 +85,7 @@ description = "The process ran by simple_test to isolate the environment"
 name = "simple-test-process"
 optional = false
 python-versions = ">=3.7,<4.0"
-version = "0.4.4"
-
-[[package]]
-category = "dev"
-description = "like dedent but more flexible"
-name = "tedent"
-optional = false
-python-versions = ">=3.7,<4.0"
-version = "0.1.5"
+version = "0.5.0"
 
 [[package]]
 category = "dev"
@@ -175,35 +95,19 @@ optional = false
 python-versions = "*"
 version = "0.10.0"
 
-[[package]]
-category = "dev"
-description = "Module for decorators, wrappers and monkey patching."
-name = "wrapt"
-optional = false
-python-versions = "*"
-version = "1.11.1"
-
 [metadata]
-content-hash = "41eef737679f27060baf8ae1c4629552a663ac18e955dd6f63753e0abac43f08"
+content-hash = "c877a94e79ecad0562127a40fea358cc50b137f337727491bfb48d9cc0684f9a"
 python-versions = "^3.7"
 
 [metadata.hashes]
-all-purpose-dict = ["88d68eb843ff86ed4139b5c65ac4d4110cd49c928943fed2c8ce315675596d16", "96ff9974050f7694859b4c4d435697c7de0d741f2281cb018f9a2877bf277c6c"]
-all-purpose-set = ["89c08544a64b96e37e00c93cfe005f1562c0ad3b58a161bd28b06f1e60e77ab6", "8afcdf437a0267003112d11862fbdc4b8437c8fba5e4e98e9acf8e22ab175c92"]
-another-linked-list = ["1201c487a3752fb36bad5d17d917431c04105b453c51eac07a0ab5b84ef7479b", "b9c494a3c6b7de124a9ac1d9fd92e20c7dc608c12dc659a6acfef81b097b56cc"]
 appdirs = ["9e5896d1372858f8dd3344faf4e5014d21849c756c8d5701f78f8a103b372d92", "d8b24664561d0d34ddfaec54636d502d7cea6e29c3eaf68f3df6180863e2166e"]
 attrs = ["69c0dbf2ed392de1cb5ec704444b08a5ef81680a61cb899dc08127123af36a79", "f0b870f674851ecbfbbbd364d6b5cbdff9dcedbc7f3f5e18a6891057f21fe399"]
 black = ["817243426042db1d36617910df579a54f1afd659adb96fc5032fcf4b36209739", "e030a9a28f542debc08acceb273f228ac422798e5215ba2a791a6ddeaaca22a5"]
-case-conversion = ["4114aaed4213f2235f1648502fd1793e5fdfa3fa86f85979fd2d0dce1584e197"]
 click = ["2335065e6395b9e67ca716de5f7526736bfa6ceead690adf616d925bdc622b13", "5b94b49521f6456670fdb30cd82a4eca9412788a93fa6dd6df72c94d5a8ff2d7"]
 docopt = ["49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491"]
-is-git-repo-clean = ["608c8585be23478af5c6c68e53f4a8ddd1320d3dd478ebc894c07ab6b702dc00", "c33ec4893389943c6f2b7351ff65904726640861b444ec37b3afb8870a9917fa"]
-num2words = ["c2b9ee11299f97a2c60ad71619b6344a975dbf65c44b7103077700706af4b378", "f2f561a8ee02b57e7f17837198d353f05ea1199792c4860da57322f7aa86d171"]
-ordered-set = ["a7bfa858748c73b096e43db14eb23e2bc714a503f990c89fac8fab9b0ee79724"]
-pretty-simple-namespace = ["56b18a978bb5538d259f3fd10680dec04ddfe8bb59b216af61eaf45ed9598a19", "e14a2bd752dd866f5cc1b0d1882272d32f589852e78302a7f40a4c67c6f7a06f"]
-regex = ["020429dcf9b76cc7648a99c81b3a70154e45afebc81e0b85364457fe83b525e4", "0552802b1c3f3c7e4fee8c85e904a13c48226020aa1a0593246888a1ac55aaaf", "308965a80b92e1fec263ac1e4f1094317809a72bc4d26be2ec8a5fd026301175", "4d627feef04eb626397aa7bdec772774f53d63a1dc7cc5ee4d1bd2786a769d19", "93d1f9fcb1d25e0b4bd622eeba95b080262e7f8f55e5b43c76b8a5677e67334c", "c3859bbf29b1345d694f069ddfe53d6907b0393fda5e3794c800ad02902d78e9", "d56ce4c7b1a189094b9bee3b81c4aeb3f1ba3e375e91627ec8561b6ab483d0a8", "ebc5ef4e10fa3312fa1967dc0a894e6bd985a046768171f042ac3974fadc9680", "f9cd39066048066a4abe4c18fb213bc541339728005e72263f023742fb912585"]
+is-git-repo-clean = ["242a6246be18a034f5938d563ecfe0b05ca958cbb84debf6f5713d7931bb7971", "e7fee031f4d79ef5f159f44d26dc50100d26c1e563a098c80ace16a55808ecb6"]
+num2words = ["0b6e5f53f11d3005787e206d9c03382f459ef048a43c544e3db3b1e05a961548", "37cd4f60678f7e1045cdc3adf6acf93c8b41bf732da860f97d301f04e611cc57"]
+pretty-simple-namespace = ["17cb165fa3a3e55605c6f3204bf077d62fc53a7005afe2de3cb9c4ed6c2718a5", "7579dcb10091defe84d3702aa0680b8ccf4ee00f93e8b0bf85195a7b93aef4af"]
 simple-chalk = ["d80f55993dfa040c1b55d2fbfb925e4fbb5798c2934601aa448ef4a192d84196"]
-simple-test-process = ["662a8199ffa97ddd4cd24f843f5483cf0ad0ce9426832dffa039c01e3b99d4ca", "f61304bc7d2a6916f48eeb60cc590cbe2ad4f18a31cf9df8accda7e21943b7c2"]
-tedent = ["18a7a63a2b1fe0bf9d082fad91c25b74594a619726ed0115bbec840670f6f07c", "3042e20657db02c0dd55a6a1df566a18280b1dd6713aeeb25f62e42aceae8a14"]
+simple-test-process = ["315bbc44b0f520e5a55b4e66a46c9e6c843b971311248ea330fe82b7a2427909", "ffab3fd86f82b10e5d215893abd95e71aed9506d6b66a39a514065919d8554ab"]
 toml = ["229f81c57791a41d65e399fc06bf0848bab550a9dfd5ed66df18ce5f05e73d5c", "235682dd292d5899d361a811df37e04a8828a5b1da3115886b73cf81ebc9100e", "f1db651f9657708513243e61e6cc67d101a39bad662eaa9b5546f789338e07a3"]
-wrapt = ["4aea003270831cceb8a90ff27c4031da6ead7ec1886023b80ce0dfe0adf61533"]
