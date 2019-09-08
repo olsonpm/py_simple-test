@@ -3,7 +3,7 @@
 # ------- #
 
 from difflib import Differ
-from po.simple_test.fns import joinWith, passThrough
+from po_simple_test.fns import joinWith, passThrough
 
 
 # ---- #
@@ -23,7 +23,5 @@ def getModuleBasename(m):
 
 
 def diff(left, right):
-    result = _d.compare(
-        left.splitlines(keepends=True), right.splitlines(keepends=True)
-    )
+    result = _d.compare(left.splitlines(keepends=True), right.splitlines(keepends=True))
     return passThrough(result, [list, joinWith("")])

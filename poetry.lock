@@ -65,6 +65,14 @@ docopt = ">=0.6.2"
 
 [[package]]
 category = "dev"
+description = "Convert between different types of cases (unicode supported)"
+name = "po-case-conversion"
+optional = false
+python-versions = ">=3.7,<4.0"
+version = "0.4.0"
+
+[[package]]
+category = "dev"
 description = "A pretty printer for SimpleNamespace"
 name = "pretty-simple-namespace"
 optional = false
@@ -96,7 +104,7 @@ python-versions = "*"
 version = "0.10.0"
 
 [metadata]
-content-hash = "c877a94e79ecad0562127a40fea358cc50b137f337727491bfb48d9cc0684f9a"
+content-hash = "39e77207fb8f6b2153e8c9772b2c2e042c6b1760f0bb0086084fc76577cc5e37"
 python-versions = "^3.7"
 
 [metadata.hashes]
@@ -107,6 +115,7 @@ click = ["2335065e6395b9e67ca716de5f7526736bfa6ceead690adf616d925bdc622b13", "5b
 docopt = ["49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491"]
 is-git-repo-clean = ["242a6246be18a034f5938d563ecfe0b05ca958cbb84debf6f5713d7931bb7971", "e7fee031f4d79ef5f159f44d26dc50100d26c1e563a098c80ace16a55808ecb6"]
 num2words = ["0b6e5f53f11d3005787e206d9c03382f459ef048a43c544e3db3b1e05a961548", "37cd4f60678f7e1045cdc3adf6acf93c8b41bf732da860f97d301f04e611cc57"]
+po-case-conversion = ["3081a4b05004558ba4d4e881a5333ad707243b72bcc21377772a96fd28b77827", "624e73247b42e0be0d726c3f45f672a2d7f0e7aad3ae8354a665fb3ded72bc9d"]
 pretty-simple-namespace = ["17cb165fa3a3e55605c6f3204bf077d62fc53a7005afe2de3cb9c4ed6c2718a5", "7579dcb10091defe84d3702aa0680b8ccf4ee00f93e8b0bf85195a7b93aef4af"]
 simple-chalk = ["d80f55993dfa040c1b55d2fbfb925e4fbb5798c2934601aa448ef4a192d84196"]
 simple-test-process = ["315bbc44b0f520e5a55b4e66a46c9e6c843b971311248ea330fe82b7a2427909", "ffab3fd86f82b10e5d215893abd95e71aed9506d6b66a39a514065919d8554ab"]

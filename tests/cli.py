@@ -5,10 +5,10 @@
 from copy import deepcopy
 from simple_test_process.parseArgs import _grepArgs as emptyGrepArgs
 from types import SimpleNamespace as o
-from po.simple_test.cli.index import createRunSimpleTest, runSimpleTest
-from po.simple_test.cli.usage import usage
-from po.simple_test.fns import passThrough, raise_
-from po.simple_test import version
+from po_simple_test.cli.index import createRunSimpleTest, runSimpleTest
+from po_simple_test.cli.usage import usage
+from po_simple_test.fns import passThrough, raise_
+from po_simple_test import version
 import os
 
 

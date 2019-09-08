@@ -3,8 +3,8 @@
 # ------- #
 
 from os import path
-from po.simple_test.fns import justReturn
-from po.simple_test.run import createRun
+from po_simple_test.fns import justReturn
+from po_simple_test.run import createRun
 from types import SimpleNamespace as o
 import sys
 
@@ -65,6 +65,7 @@ def runTests(r):
     result = spyRun(
         grepArgs=grepArgs, projectDir=projectDir, reporter="some_reporter", silent=True
     )
+
     passed = (
         result == 0
         and len(spyResult.args) == 1
@@ -72,7 +73,7 @@ def runTests(r):
         == [
             sys.executable,
             "-m",
-            "simple_test_process",
+            "po_simple_test._vendor.simple_test_process",
             "some_reporter",
             "True",
             *expectedCliGrepArgs,

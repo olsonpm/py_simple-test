@@ -1,18 +1,18 @@
 [tool.poetry]
-name = "po.simple_test"
-version = "0.4.2"
+name = "po_simple_test"
+version = "0.1.0"
 description = "A simple test runner"
 authors = ["Philip Olson <philip.olson@pm.me>"]
 license = "WTFNMFPL-1.0"
 readme = "README.md"
 repository = "https://github.com/olsonpm/py_simple-test"
-include = ["license.txt"]
-packages = [
-  { include = "po" }
+include = [
+  "po_simple_test/license.txt",
+  "po_simple_test/top_level.txt"
 ]
 
 [tool.poetry.scripts]
-simple-test = "po.simple_test.script:main"
+simple-test = "po_simple_test.script:main"
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -25,15 +25,16 @@ toml = "^0.10.0"
 is_git_repo_clean = "^0.3.4"
 black = {version = "^18.3-alpha.0",allows-prereleases = true}
 simple_test_process = "^0.5.0"
+po_case_conversion = "^0.4.0"
 
 [tool.vendorize]
-target = "po/simple_test/_vendor"
+target = "po_simple_test/_vendor"
 packages = [
   "wrapt >=1.10,<1.11",
   "ordered_set >=3.1,<3.2",
-  "po.case_conversion >=0.3,<0.4",
   "tedent >=0.1.1,<0.2",
   "simple_test_process >=0.5,<0.6",
+  "po_case_conversion >=0.4,<0.5"
 ]
 
 [build-system]
